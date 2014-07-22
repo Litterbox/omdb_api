@@ -13,7 +13,8 @@ app.get('/search', function (req, res) {
 
     request(url, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            res.send(body);
+            var data = JSON.parse(body);
+            res.render("results.ejs", {movieList: data.Search});
         }
     });
 });
